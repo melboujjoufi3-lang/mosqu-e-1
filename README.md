@@ -1,41 +1,71 @@
-graph TD
-    A[Centre Culturel d’Averroes Jettois ASBL<br>(Demandeur)] -->|Introduit la demande via| M[MyPermit<br>(Plateforme en ligne)]
-    M -->|Transmet| B[Urban.brussels<br>(Service Public Régional)]
-    B -->|Coordonne et transmet| C[Fonctionnaire délégué]
-    B -->|Organise l'enquête publique| D[Commune de Jette<br>(Collège des Bourgmestre et Échevins)]
-    B -->|Demande d'avis| E[Commission de Concertation]
-    B -->|Demande d'avis obligatoire| F[SIAMU<br>(Service d’Incendie)]
-    B -->|Demande d'avis techniques| G[Autres instances]
-    G --> H[Service de Sécurité ASTRID]
-    G --> I[VIVAQUA<br>(Eau/Assainissement)]
-    G --> J[AccessAndGo<br>(Accessibilité PMR)]
-    G --> K[CRMS<br>(Patrimoine)]
-    D -->|Avis| C
-    D -->|Observations| L[Participants à l’enquête publique]
-    E -->|Avis consultatif| C
-    F -->|Avis obligatoire| C
-    H -->|Avis| C
-    I -->|Avis| C
-    J -->|Avis| C
-    K -->|Avis| C
-    L -->|Observations| E
-    C -->|Décision finale| A
+## Schéma des acteurs – Permis d’urbanisme (Bruxelles)
 
-    classDef acteur fill:#f9f,stroke:#333,stroke-width:2px;
-    class A,B,C,D,E,F,G,H,I,J,K,L,M acteur;
+```mermaid
+%%{init: {'theme': 'default', 'flowchart': {'useMaxWidth': false, 'htmlLabels': true, 'curve':'basis'}}}%%
+flowchart TD
+  %% Groupes
+  subgraph G0[Demandeur]
+    A["Centre Culturel d’Averroes Jettois ASBL<br/>(Demandeur)"]
+  end
+  subgraph G1[Plateforme]
+    M["MyPermit<br/>(Plateforme en ligne)"]
+  end
+  subgraph G2[Autorité régionale]
+    B["Urban.brussels<br/>(Service Public Régional)"]
+    C["Fonctionnaire délégué"]
+  end
+  subgraph G3[Commune]
+    D["Commune de Jette<br/>(Collège des Bourgmestre et Échevins)"]
+    E["Commission de Concertation"]
+  end
+  subgraph G4[Instances techniques]
+    F["SIAMU<br/>(Service d’Incendie)<br/>(Avis obligatoire)"]
+    G["Autres instances"]
+    H["Service de Sécurité ASTRID"]
+    I["VIVAQUA<br/>(Eau/Assainissement)"]
+    J["AccessAndGo<br/>(Accessibilité PMR)"]
+    K["CRMS<br/>(Patrimoine)"]
+  end
+  subgraph G5[Public]
+    L["Participants à l’enquête publique"]
+  end
 
-Légende
+  %% Flux
+  A -->|Introduit la demande via| M
+  M -->|Transmet| B
+  B -->|Coordonne et transmet| C
+  B -->|Organise l'enquête publique| D
+  B -->|Demande d'avis| E
+  B -->|Demande d'avis obligatoire| F
+  B -->|Demande d'avis techniques| G
+  G --> H
+  G --> I
+  G --> J
+  G --> K
+  D -->|Avis| C
+  D -->|Observations| L
+  L -->|Observations| E
+  E -->|Avis consultatif| C
+  F -->|Avis obligatoire| C
+  H -->|Avis| C
+  I -->|Avis| C
+  J -->|Avis| C
+  K -->|Avis| C
+  C -->|Décision finale| A
 
-Centre Culturel d’Averroes Jettois ASBL : Soumet la demande via MyPermit et exécute les travaux après approbation.
-MyPermit (Plateforme en ligne) : Interface numérique utilisée par le demandeur pour soumettre la demande et par Urban.brussels pour gérer le dossier.
-Urban.brussels : Coordonne le processus administratif, reçoit la demande via MyPermit, et relaie au fonctionnaire délégué.
-Fonctionnaire délégué : Décide de l’octroi ou du refus du permis après réception des avis.
-Commune de Jette : Organise l’enquête publique et donne un avis via le Collège des Bourgmestre et Échevins.
-Commission de Concertation : Évalue le projet et émet un avis consultatif.
-SIAMU : Vérifie la sécurité incendie (avis obligatoire).
-Service de Sécurité ASTRID : Fournit un avis sur la sécurité, si pertinent.
-VIVAQUA : Évalue les aspects eau/assainissement.
-AccessAndGo : Vérifie l’accessibilité pour les personnes à mobilité réduite.
-CRMS : Évalue les impacts patrimoniaux, si applicable.
-Participants à l’enquête publique : Soumettent des observations influençant l’avis de la Commission de Concertation.
+  %% Styles (palette douce et lisible)
+  classDef demandeur fill:#fde7ff,stroke:#b14ab9,stroke-width:1.5px;
+  classDef plateforme fill:#e6f4ff,stroke:#3182ce,stroke-width:1.5px;
+  classDef autorite fill:#fff4d6,stroke:#b7791f,stroke-width:1.5px;
+  classDef commune fill:#f3e8ff,stroke:#7e22ce,stroke-width:1.5px;
+  classDef technique fill:#ffe4e6,stroke:#be123c,stroke-width:1.5px;
+  classDef public fill:#eef2f7,stroke:#374151,stroke-width:1.5px;
 
+  class A demandeur;
+  class M plateforme;
+  class B,C autorite;
+  class D,E commune;
+  class F,G,H,I,J,K technique;
+  class L public;
+
+```
